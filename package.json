@@ -1,0 +1,26 @@
+{
+  "name": "ElectronApp",
+  "version": "1.0.0",
+  "description": "electron app ",
+  "main": "./main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/niksolaz/ElectronApp.git"
+  },
+  "keywords": [
+    "electron",
+    "node"
+  ],
+  "author": "Nicola Solazzo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/niksolaz/ElectronApp/issues"
+  },
+  "homepage": "https://github.com/niksolaz/ElectronApp",
+  "devDependencies": {
+    "electron-prebuilt": "^0.36.9"
+  }
+}
