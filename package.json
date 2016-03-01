@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/niksolaz/ElectronApp",
   "devDependencies": {
-    "electron-prebuilt": "^0.36.9"
+    "electron-prebuilt": "^0.36.9",
+    "google-auth-library": "^0.9.7",
+    "googleapis": "^2.1.7"
   }
 }
