@@ -27,43 +27,43 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   authorize(JSON.parse(content), listEvents);
 });
 
+//write file
+fs.writeFile(event, function(err,data) {
+  if (err) {
+    console.log('Error add event: ' + err);
+    return;
+  }
+  console.log('It is saved!');
+  authorize(JSON.parse(data), addEvents);
+});
+
 // example Json file in https://developers.google.com/google-apps/calendar  event --> insert
 var event = {
-  'summary': 'Google I/O 2015',
-  'location': '800 Howard St., San Francisco, CA 94103',
-  'description': 'A chance to hear more about Google\'s developer products.',
-  'start': {
-    'dateTime': '2015-05-28T09:00:00-07:00',
-    'timeZone': 'America/Los_Angeles'
-  },
-  'end': {
-    'dateTime': '2015-05-28T17:00:00-07:00',
-    'timeZone': 'America/Los_Angeles'
-  },
-  'recurrence': [
-    'RRULE:FREQ=DAILY;COUNT=2'
-  ],
-  'attendees': [
-    {'email': 'lpage@example.com'},
-    {'email': 'sbrin@example.com'}
-  ],
-  'reminders': {
-    'useDefault': false,
-    'overrides': [
-      {'method': 'email', 'minutes': 24 * 60},
-      {'method': 'popup', 'minutes': 10}
-    ]
-  }
+  "start":
+    {
+      "timeZone":"Europe/Rome"
+    },
+    "end":
+      {
+        "dateTime":""
+      },
+    "reminders":
+      {
+        "overrides":{
+          "minutes":10080,
+          "method":"email"
+        }
+      },
+    "attendees":
+      {
+        "email":"solazzo.nicola@gmail.com"
+      },
+    "attachments":{
+      "fileUrl":"https://calendar.google.com/calendar/"
+    },
+
+  "description":""
 };
-console.log('event',event);
-var request = gapi.client.calendar.events.insert({
-  'calendarId': 'primary',
-  'resource': event
-});
-console.log('request', request)
-request.execute(function(event) {
-  appendPre('Event created: ' + event.htmlLink);
-});
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -190,14 +190,37 @@ function listEvents(auth) {
       console.log('No upcoming events found.');
     } else {
       document.write(`Upcoming ${events.length} events`);
-      document.write("<ul>");
+      document.write(`<div><ul>`);
       for (var i = 0; i < events.length; i++) {
         var event = events[i];
         var start = event.start.dateTime || event.start.date;
         console.log('%s - %s', start, event.summary);
         document.write(`<li><a href='${event.htmlLink}'>Event: ${start} - ${event.summary}</a></li>`);
       }
-      document.write('</ul>')
+      document.write(`</ul></div>`);
+      document.write(`<div>'${addEvents}'</div>`);
     }
+  });
+}
+
+function addEvents(auth) {
+  var calendar = google.calendar('v3');
+  calendar.events.insert({
+    auth: auth,
+    calendarId: 'primary',
+    fields: 'htmlLink',
+    resource: event,
+  }, function(err, event) {
+    if (err) {
+      console.log('There was an error contacting the Calendar service: ' + err);
+      return;
+    }else{
+      var description = event.description;
+      document.write(`<form>`);
+      document.write(`<input type="text" name="event">Event:${description}</input>`);
+      document.write(`<input type="submit"></input>`);
+      document.write(`</form>`);
+    }
+    console.log('Event created: %s', event.htmlLink);
   });
 }
