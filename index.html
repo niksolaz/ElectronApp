@@ -3,10 +3,41 @@
   <head>
     <meta charset="UTF-8">
     <title>electron app</title>
+           <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" integrity="sha384-aUGj/X2zp5rLCbBxumKTCw2Z50WgIr1vs/PFN4praOTvYXWlVyh2UtNUU0KAUhAX" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" src="css/style.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
   </head>
   <body>
-  	<h1>Electron App by Nik Solaz</h1>
-    <img src="http://www.cocchetti.it/sito/images/Immagini/News/calendario-icona.png" height="42" width="42">
+  	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	    	<div class="row">
+			  <div class="col-md-6"></div>
+			  <div class="col-md-6">
+			  	<button type="button" class="btn btn-success navbar-btn" href="#">
+			    	<span class="glyphicon glyphicon-calendar" aria-hidden="true">
+			    		Google Calendar
+			    	</span>
+			    </button>
+			  </div>
+			  <div class="col-md-6"></div>
+			</div>
+	    </div>
+	  </div>
+	</nav>
+  	<div class="jumbotron">
+	  <h1>Electron App by Nik Solaz</h1>
+	  <p><a class="btn btn-success btn-lg" href="#" role="button">Learn more</a></p>
+	</div>
     <script src="quickstart.js" language="JavaScript" type="text/javascript"></script>
   </body>
 </html>
