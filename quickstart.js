@@ -186,7 +186,11 @@ function listEvents(auth) {
     }
     var events = response.items;
     if (events.length == 0) {
-      document.write('No upcoming events');
+      document.write(
+        <div class="jumbotron">
+          <h1>No Upcoming Events</h1>
+        </div>
+      );
       console.log('No upcoming events found.');
     } else {
       document.write(`Upcoming ${events.length} events`);
