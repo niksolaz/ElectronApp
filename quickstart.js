@@ -4,6 +4,9 @@ var smalltalk = require('smalltalk');
 var readline = require('readline');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+var React = require('react');
+var ReactDOM = require('react-dom');
+import SeeEvent from './src/components/modules/SeeEvent.jsx'
 
 // If modifying these scopes, delete your previously saved credentials
 // at ~/.credentials/calendar-nodejs-quickstart.json
@@ -186,10 +189,9 @@ function listEvents(auth) {
     }
     var events = response.items;
     if (events.length == 0) {
+      //------- Module REACT.JS --------------
       document.write(
-        <div class="jumbotron">
-          <h1>No Upcoming Events</h1>
-        </div>
+        <div>{SeeEvent}</div>
       );
       console.log('No upcoming events found.');
     } else {
